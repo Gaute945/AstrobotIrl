@@ -1,5 +1,3 @@
-#include <Arduino.h>
-
 /***************************************************
   This is our library for the Adafruit HX8357D Breakout
   ----> http://www.adafruit.com/products/2050
@@ -16,27 +14,21 @@
  ****************************************************/
 
 #include <SPI.h>
-#include "User_Setup.h"
+#include "Adafruit_GFX.h"
 #include "Adafruit_ST7796S_kbv.h"
 
-// Use hardware SPI on the ESP8266: MOSI=13, MISO=12, SCLK=14, then CS/DC/RST below.
+// These are 'flexible' lines that can be changed
+#define TFT_CS 10
+#define TFT_DC 9
+#define TFT_RST 8 // RST can be set to -1 if you tie it to Arduino's reset
+
+// Use hardware SPI (on Uno, #13, #12, #11) and the above for CS/DC
 Adafruit_ST7796S_kbv tft = Adafruit_ST7796S_kbv(TFT_CS, TFT_DC, TFT_RST);
 
 // SoftSPI - note that on some processors this might be *faster* than hardware SPI!
 //Adafruit_ST7796S_kbv tft = Adafruit_ST7796S_kbv(TFT_CS, TFT_DC, MOSI, SCK, TFT_RST, MISO);
 
-unsigned long testFillScreen();
-unsigned long testText();
-unsigned long testLines(uint16_t color);
-unsigned long testFastLines(uint16_t color1, uint16_t color2);
-unsigned long testRects(uint16_t color);
-unsigned long testFilledRects(uint16_t color1, uint16_t color2);
-unsigned long testFilledCircles(uint8_t radius, uint16_t color);
-unsigned long testCircles(uint8_t radius, uint16_t color);
-unsigned long testTriangles();
-unsigned long testFilledTriangles();
-unsigned long testRoundRects();
-unsigned long testFilledRoundRects();
+
 
 void setup() {
   Serial.begin(9600);
