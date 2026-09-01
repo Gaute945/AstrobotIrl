@@ -3,8 +3,8 @@
 #define TFT_WIDTH  320
 #define TFT_HEIGHT 480
 
-#define LED_PIN 15
-#define BEEP_PIN 12
+#define LED_PIN 16
+#define BEEP_PIN 2
 
 //#define TFT_MISO 12 not used
 #define TFT_MOSI 13
